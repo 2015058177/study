@@ -1,4 +1,4 @@
-package com.example.user.myapplication.week2;
+package com.example.user.androidstudy.week2;
 
 
 import android.os.Bundle;
@@ -8,20 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.user.myapplication.R;
+import com.example.user.androidstudy.R;
 
 
 /**
  * Created by junsu on 2017-05-20.
  */
 
-public class SecondFragment extends Fragment {
+public class FirstFragment extends Fragment {
 
-    public static SecondFragment newInstance() {
+    public static FirstFragment newInstance() {
 
         Bundle args = new Bundle();
 
-        SecondFragment fragment = new SecondFragment();
+        FirstFragment fragment = new FirstFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -30,7 +30,7 @@ public class SecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View view = inflater.inflate(R.layout.second_fragment, container, false);
+        View view = inflater.inflate(R.layout.first_fragment, container, false);
         return view;
     }
 }

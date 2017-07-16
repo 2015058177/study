@@ -1,4 +1,4 @@
-package com.example.user.myapplication.week2;
+package com.example.user.androidstudy.week2;
 
 
 import android.support.v4.app.Fragment;
