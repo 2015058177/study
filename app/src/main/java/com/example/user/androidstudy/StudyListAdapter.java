@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.user.androidstudy.week2.ViewPagerActivity;
 import com.example.user.androidstudy.week4.FloatingViewstartActivity;
+import com.example.user.androidstudy.week5.GalleryActivity;
 
 
 import java.util.ArrayList;
@@ -32,7 +33,8 @@ public class StudyListAdapter extends RecyclerView.Adapter<StudyListAdapter.Stud
     private List<Class> studyList = new ArrayList<>();
     private Class[] studyArray = {
             ViewPagerActivity.class,
-            FloatingViewstartActivity.class
+            FloatingViewstartActivity.class,
+            GalleryActivity.class
     };
 
     public StudyListAdapter(Context context) {

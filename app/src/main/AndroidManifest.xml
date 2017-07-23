@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.androidstudy">
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".week5.AndroidApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.user.androidstudy.week2.ViewPagerActivity"></activity>
-        <activity android:name="com.example.user.androidstudy.week4.FloatingViewstartActivity"></activity>
+        <activity android:name=".week2.ViewPagerActivity"></activity>
+        <activity android:name=".week4.FloatingViewstartActivity"></activity>
+        <activity android:name=".week5.GalleryActivity"></activity>
 
         <service
             android:name=".week4.FloatingViewService"
