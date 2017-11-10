@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/what_is_context_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/context_start_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start" />
+
+    <Button
+        android:id="@+id/context_send_broadcast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="send Broadcast" />
+
+    <Button
+        android:id="@+id/context_inflate_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="inflate layout(dd view)" />
+
+    <Button
+        android:id="@+id/context_get_resource_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get resource(string)" />
+
+    <Button
+        android:id="@+id/context_get_device_storage_read_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Read!! (storage access)" />
+
+    <Button
+        android:id="@+id/context_get_device_storage_write_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Write!! (storage access)" />
+
+    <Button
+        android:id="@+id/context_get_device_storage_delete_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete!! (storage access)" />
+
+</LinearLayout>

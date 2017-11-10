@@ -3,22 +3,36 @@ package com.example.user.androidstudy.week4;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.view.ViewGroup;
 
 import com.example.user.androidstudy.R;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+
+import static android.content.ContentValues.TAG;
 
 
 public class FloatingViewService extends Service {
 
     private WindowManager mWindowManager;
     private View mFloatingView;
+    private ImageView mImageView;
+
+    // 주기적 실행을 위한 timer object
+    private Timer timer;
 
     @Nullable
     @Override
@@ -44,6 +58,11 @@ public class FloatingViewService extends Service {
         params.y = 100;
 
         mFloatingView=LayoutInflater.from(this).inflate(R.layout.view_floating_head, null);
+
+        //image 크기를 키워야 디기 때문에 image 객체를 가져온다.
+        // mFloatingView 내에 imageview 가 있기 때문에 mFloatingview로 가져온다.
+        mImageView=(ImageView)mFloatingView.findViewById(R.id.image);
+
         mFloatingView.setOnTouchListener(new View.OnTouchListener() {
             private int initialX;
             private int initialY;
@@ -62,7 +81,8 @@ public class FloatingViewService extends Service {
                         //get the touch location
                         initialTouchX = event.getRawX();
                         initialTouchY = event.getRawY();
-                        return true;
+                        break;
+                    //return true;
 
                     case MotionEvent.ACTION_MOVE:
                         //calculate the X and Y coordinates of the view.
@@ -77,6 +97,40 @@ public class FloatingViewService extends Service {
             }
         });
 
+        mFloatingView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Log.d(TAG, "onClick mFloatingView is done");
+                //이미 timer 가 켜져있다면 cancel()
+                if(timer !=null){
+                    timer.cancel();
+                    timer=null;
+                    return;
+                }
+
+                // 새로운 timer 를 만든다.
+                timer = new Timer();
+                //timer 에 새로운 timerTask를 부여한다.
+                //100ms 이후 실행하면 20ms 주기로 run method가 실행된다.
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        new Handler(getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                ViewGroup.LayoutParams viewParam = mImageView.getLayoutParams();
+                                Log.d(TAG, "viewparam width: " + viewParam.width + " height:" + viewParam.height);
+                                viewParam.height += 2;
+                                viewParam.width += 2;
+                                mImageView.setLayoutParams(viewParam);
+                            }
+                        });
+                    }
+                }, 100, 50);
+            }
+        });
+
+        //길게 누르면 끄기
         mFloatingView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -90,10 +144,13 @@ public class FloatingViewService extends Service {
         mWindowManager.addView(mFloatingView, params);
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (mFloatingView != null) mWindowManager.removeView(mFloatingView);
+        //timer가 있다면 끄기
+        if(timer !=null) timer.cancel();
     }
 
 }

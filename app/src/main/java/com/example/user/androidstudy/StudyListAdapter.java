@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.example.user.androidstudy.week2.ViewPagerActivity;
 import com.example.user.androidstudy.week4.FloatingViewstartActivity;
 import com.example.user.androidstudy.week5.GalleryActivity;
+import com.example.user.androidstudy.week7.WhatIsContextActivity;
+import com.example.user.androidstudy.week8.SwipeViewActivity;
 
 
 import java.util.ArrayList;
@@ -34,7 +36,9 @@ public class StudyListAdapter extends RecyclerView.Adapter<StudyListAdapter.Stud
     private Class[] studyArray = {
             ViewPagerActivity.class,
             FloatingViewstartActivity.class,
-            GalleryActivity.class
+            GalleryActivity.class,
+            WhatIsContextActivity.class,
+            SwipeViewActivity.class,
     };
 
     public StudyListAdapter(Context context) {
