@@ -6,6 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.user.androidstudy.R;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.SwipeableItemAdapter;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.SwipeableItemConstants;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.action.SwipeResultAction;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.action.SwipeResultActionDefault;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.action.SwipeResultActionRemoveItem;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.annotation.SwipeableItemDrawableTypes;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.annotation.SwipeableItemResults;
 
 import java.util.ArrayList;
 import java.util.List;

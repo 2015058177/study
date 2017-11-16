@@ -33,4 +33,8 @@ dependencies {
     compile ('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.11.0@aar'){
               transitive=true
     }
+    //view binding library butter knife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
 }

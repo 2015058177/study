@@ -1,12 +1,18 @@
 package com.example.user.androidstudy.week7;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +42,11 @@ public class WhatIsContextActivity extends AppCompatActivity {
     private Button getResourceButton;
     private Button accessStorageWriteButton;
     private Button accessStorageDeleteButton;
+    private Button getSystemServiceButton;
     private static final String FILE_NAME = "new_file.txt";
+
+    private final int LOCATION_PERMISSON_REQUEST = 2017;
+    private final int LOCATION_PERMISSON_INTERVAL = 1000;
 
 
     private Button startActivityButton;
@@ -126,6 +136,15 @@ public class WhatIsContextActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        getSystemServiceButton = (Button) findViewById(R.id.context_system_service_button);
+        getSystemServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[] permissions = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+                ActivityCompat.requestPermissions(WhatIsContextActivity.this, permissions, LOCATION_PERMISSON_REQUEST);
+            }
         });
 
 
@@ -218,6 +237,37 @@ public class WhatIsContextActivity extends AppCompatActivity {
             Toast.makeText(this, "There is no file", Toast.LENGTH_SHORT).show();
         }
     }
+
+    private void getMySystemService() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        // Android Device system service 를 context 내의 getSystemService method 를 이용해서 가져올 수 있다.
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        Toast.makeText(WhatIsContextActivity.this,
+                String.format("lat: %f, lng: %f", location.getLatitude(), location.getLongitude()),
+                Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (grantResults.length == 0)
+            return;
+
+        switch (requestCode) {
+            case LOCATION_PERMISSON_REQUEST:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    getMySystemService();
+                }
+        }
+    }
+
 
 }
 

@@ -5,6 +5,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.example.user.androidstudy.R;
+import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractSwipeableItemViewHolder;
 
 
 /**

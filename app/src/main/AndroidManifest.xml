@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.user.androidstudy">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -24,6 +27,7 @@
         <activity android:name=".week5.GalleryActivity"></activity>
         <activity android:name=".week7.WhatIsContextActivity" />
         <activity android:name=".week7.NewActivity" />
+        <activity android:name=".week7_5.ButterKnifeActivity"/>
         <activity android:name=".week8.SwipeViewActivity"/>
 
         <service

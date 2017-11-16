@@ -14,6 +14,7 @@ import com.example.user.androidstudy.week2.ViewPagerActivity;
 import com.example.user.androidstudy.week4.FloatingViewstartActivity;
 import com.example.user.androidstudy.week5.GalleryActivity;
 import com.example.user.androidstudy.week7.WhatIsContextActivity;
+import com.example.user.androidstudy.week7_5.ButterKnifeActivity;
 import com.example.user.androidstudy.week8.SwipeViewActivity;
 
 
@@ -39,6 +40,7 @@ public class StudyListAdapter extends RecyclerView.Adapter<StudyListAdapter.Stud
             GalleryActivity.class,
             WhatIsContextActivity.class,
             SwipeViewActivity.class,
+            ButterKnifeActivity.class,
     };
 
     public StudyListAdapter(Context context) {
