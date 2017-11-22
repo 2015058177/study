@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import com.example.user.androidstudy.AndroidApplication;
+
 import java.util.ArrayList;
 import java.util.List;
 

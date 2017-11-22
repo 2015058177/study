@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.user.androidstudy.week10.CalendarActvity;
 import com.example.user.androidstudy.week2.ViewPagerActivity;
 import com.example.user.androidstudy.week4.FloatingViewstartActivity;
 import com.example.user.androidstudy.week5.GalleryActivity;
 import com.example.user.androidstudy.week7.WhatIsContextActivity;
 import com.example.user.androidstudy.week7_5.ButterKnifeActivity;
 import com.example.user.androidstudy.week8.SwipeViewActivity;
+import com.example.user.androidstudy.week9.RealmTestActivity;
 
 
 import java.util.ArrayList;
@@ -41,6 +43,8 @@ public class StudyListAdapter extends RecyclerView.Adapter<StudyListAdapter.Stud
             WhatIsContextActivity.class,
             SwipeViewActivity.class,
             ButterKnifeActivity.class,
+            RealmTestActivity.class,
+            CalendarActvity.class,
     };
 
     public StudyListAdapter(Context context) {
