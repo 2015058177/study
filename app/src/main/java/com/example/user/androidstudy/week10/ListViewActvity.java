@@ -28,17 +28,14 @@ public class ListViewActvity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_list_view);
 
         CalendarCollection.date_collection_arr=new ArrayList<CalendarCollection>();
-        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-04-01","John Birthday"));
-        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-04-04","Client Meeting at 5 p.m."));
-        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-04-06","A Small Party at my office"));
-        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-05-02","Marriage Anniversary"));
-        CalendarCollection.date_collection_arr.add(new CalendarCollection("2015-04-11","Live Event and Concert of sonu"));
-
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2017-12-01","John Birthday"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2017-09-04","Client Meeting at 5 p.m."));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2017-11-06","A Small Party at my office"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2017-10-02","Marriage Anniversary"));
+        CalendarCollection.date_collection_arr.add(new CalendarCollection("2017-11-11","Live Event and Concert of sonu"));
 
         getWidget();
     }
-
-
 
     public void getWidget(){
         btn_calendar = (Button) findViewById(R.id.btn_calendar);

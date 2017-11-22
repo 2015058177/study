@@ -45,10 +45,7 @@ public class AndroidListAdapter extends ArrayAdapter<CalendarCollection> {
             viewHolder.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
             viewHolder.tv_event = (TextView) convertView.findViewById(R.id.tv_event);
 
-
             convertView.setTag(viewHolder);
-
-
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }

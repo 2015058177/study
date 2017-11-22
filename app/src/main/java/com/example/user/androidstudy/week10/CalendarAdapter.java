@@ -5,11 +5,15 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,13 +34,13 @@ import java.util.Locale;
 public class CalendarAdapter extends BaseAdapter {
     private Context context;
 
-    private GregorianCalendar month;
-    public GregorianCalendar pmonth;
+    private Calendar month = Calendar.getInstance();
+    public Calendar pmonth = Calendar.getInstance();
     /**
      * calendar instance for previous month for getting complete view
      */
-    public GregorianCalendar pmonthmaxset;
-    private GregorianCalendar selectedDate;
+    public Calendar pmonthmaxset = Calendar.getInstance();
+    private Calendar selectedDate = Calendar.getInstance();
     int firstDay;
     int maxWeeknumber;
     int maxP;
@@ -47,13 +51,12 @@ public class CalendarAdapter extends BaseAdapter {
     String itemvalue, curentDateString;
     DateFormat df;
 
-    private ArrayList<String> items;
-    public static List<String> day_string;
+    private ArrayList<String> items = new ArrayList<>();
+    public static List<String> day_string=new ArrayList<>();
     private View previousView;
     public ArrayList<CalendarCollection>  date_collection_arr;
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public CalendarAdapter(Context context, GregorianCalendar monthCalendar, ArrayList<CalendarCollection> date_collection_arr) {
+    public CalendarAdapter(Context context, Calendar monthCalendar, ArrayList<CalendarCollection> date_collection_arr) {
         this.date_collection_arr=date_collection_arr;
         CalendarAdapter.day_string = new ArrayList<String>();
         Locale.setDefault(Locale.US);
@@ -69,11 +72,8 @@ public class CalendarAdapter extends BaseAdapter {
 
     }
 
-    public CalendarAdapter(CalendarActvity context, GregorianCalendar cal_month, ArrayList<CalendarCollection> date_collection_arr) {
-    }
-
     public void setItems(ArrayList<String> items) {
-
+        this.items = items;
     }
 
     public int getCount() {
@@ -179,7 +179,6 @@ public class CalendarAdapter extends BaseAdapter {
         return view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void refreshDays() {
         // clear items
         items.clear();
@@ -209,14 +208,14 @@ public class CalendarAdapter extends BaseAdapter {
          */
         for (int n = 0; n < mnthlength; n++) {
 
-            itemvalue = df.format(pmonthmaxset.getTime());
+            Date date = pmonthmaxset.getTime();
+            itemvalue = df.format(date);
             pmonthmaxset.add(GregorianCalendar.DATE, 1);
             day_string.add(itemvalue);
 
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private int getMaxP() {
         int maxP;
         if (month.get(GregorianCalendar.MONTH) == month
@@ -252,11 +251,7 @@ public class CalendarAdapter extends BaseAdapter {
                     txt.setTextColor(Color.WHITE);
                 }
             }}
-
-
-
     }
-
 
     public void getPositionList(String date,final Activity act){
 
